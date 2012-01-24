@@ -1,0 +1,24 @@
+knurl
+=====
+
+A Python module for managing web app state in URLs
+
+Given a structure for the possible states, knurl allows parsing and
+building compact URLs for any particular state, and also any
+decoposition of the state for use in form fields.
+
+It works by representing the app state as a tree whose leaves are
+lists of string variables.  A tree can be separated into a list of
+sparse trees or subtrees which can be combined in a html form
+submission to compose a page state in a flexible way.
+
+Reserved URL characters ',' ';' '(' ')' '=' are used to delimit
+strings in the url.
+
+
+It works with Python versions 2.7 or 3.
+
+To install, run 'python setup.py install' from the root directory.
+
+The tests can be run with nose: run the 'nosetests' command in the
+root directory.
