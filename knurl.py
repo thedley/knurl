@@ -283,24 +283,28 @@ def _val(value):
 
 def _parse_segment(itoks):
     tree = []
-    code = value = subt = None
+    code = subt = None
+    value = ""
     for tok in itoks:
         if tok == "(":
             if value:
                 tree.append((code, _val(value)))
                 code = None
             tree.append((code, _parse_segment(itoks)))
-            code = value = None
+            code = None
+            value = ""
             subt = True
         elif tok == ";" or tok == ")":
             if not subt:
                 tree.append((code, _val(value)))
-            code = value = subt = None
+            code = subt = None
+            value = ""
             if tok == ")":
                 break
         elif tok == "=":
             code = unquote(value, encoding=encoding) or ""
-            value = subt = None
+            subt = None
+            value = ""
         else:
             value = tok
             subt = None
