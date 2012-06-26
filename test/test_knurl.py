@@ -112,7 +112,11 @@ def test_codepath_error():
     for strucdef, keypath, desc in _codepath_error:
         yield codepath_error, strucdef, keypath
 
-
+def test_empty_key():
+    # test that an empty key is parsable
+    uristate = [('~', '=')]
+    structure = knurl.struct("a")
+    assert structure.parse(uristate) == {}
 
 _codepath_check = [
     (".", (10,), "10", "integer key"),
