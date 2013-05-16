@@ -19,6 +19,13 @@
 from __future__ import unicode_literals
 import knurl
 
+def test_ignore_invalid():
+    s = knurl.struct('a')
+    # py3 unquote handles this properly, but py2 will raise
+    # UnicodeDecodeError if node decoding with 'ignore'
+    s.parse(['%9a%e7%9f%a5/'])
+    
+
 def test_subpack_cond():
     st = knurl.struct("g{a, [m], [av]}")
     state = st.parse(["av"])

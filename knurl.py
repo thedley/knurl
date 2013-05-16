@@ -22,7 +22,7 @@ except ImportError:
     # python 2
     import urllib
     def unquote(v, encoding):
-        return urllib.unquote(v.encode(encoding)).decode(encoding)
+        return urllib.unquote(v.encode(encoding)).decode(encoding, 'ignore')
     def quote(v, encoding):
         return urllib.quote(v.encode(encoding)).decode(encoding)
     str = unicode
